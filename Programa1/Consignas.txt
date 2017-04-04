@@ -1,0 +1,9 @@
+1 Personaje
+2 Movimiento
+3 Chequeo Limites
+------------------ 
+4 Obstaculos
+5 Colisiones
+5 Game Over
+------------------
+6 Enemigos
