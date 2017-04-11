@@ -46,7 +46,7 @@ namespace Juego
         public void Run()
         {
             //Menu
-            while (eleccion != 3 || inGame == true) {
+            while (eleccion != 4) {
                 Console.SetCursorPosition(50, 5);
             Console.WriteLine("-------Bienvenido------- \n[1]Iniciar 1 jugador\n[2]Iniciar 2 jugadores\n[3]Creditos\n[4]Salir");
                 //Chequeo de error
@@ -76,7 +76,7 @@ namespace Juego
                 //Elecciones
                 switch (eleccion)
                 {
-                    //Inicio Juego
+                    //Inicio Juego SinglePlayer
                     case 1:
                         Console.WriteLine("Flechas para moverse\n Backspace para salir\n\n[0] Jugador\n[+]=Obstaculo\n[$]=Enemigo\n\n(enter para continuar..) ");
                         Console.ReadLine();
@@ -134,16 +134,47 @@ namespace Juego
 
                             System.Threading.Thread.Sleep(50);
                             Console.Clear();
+                            for (int i = 0; i < Obst.Length; i++)
+                            {
+                                //aca te agrego el ||
+                                if (playah.getPosX() == Obst[i].getPosX() && playah.getPosY() == Obst[i].getPosY())
+                                {
+                                    Console.Clear();
+                                    Console.SetCursorPosition(50, 5);
+                                    Console.WriteLine("GAME OVER\n\n\n(presione enter para continuar)");
+                                    Console.ReadLine();
+                                    Console.Clear();
+                                    inGame = false;
+
+                                }
+
+                            }
+                            for (int i = 0; i < Rivals.Length; i++)
+                            {
+                                //aca te agrego el ||
+                                if (playah.getPosX() == Rivals[i].getPosX() && playah.getPosY() == Rivals[i].getPosY())
+                                {
+                                    Console.Clear();
+                                    Console.SetCursorPosition(50, 5);
+                                    Console.WriteLine("GAME OVER\n\n\n(presione enter para continuar)");
+                                    Console.ReadLine();
+                                    Console.Clear();
+                                    inGame = false;
+
+                                }
+
+                            }
                         }
+                       
                         break;
                         //aca te agrego para 2 jugadores
                     case 2:
-                        Console.WriteLine("Flechas para moverse\n Backspace para salir\n\n[0] Jugador\n[@] Jugador\n[+]=Obstaculo\n[$]=Enemigo\n\n(enter para continuar..) ");
+                        Console.WriteLine("\nJugador 1 = Flechas para moverse\nJugador 2 = WASD\nBackspace para salir\n\n[0] Jugador 1\n[@] Jugador 2\n[+]=Obstaculo\n[$]=Enemigo\n\nNO SE CHOQUEN ENTRE USTEDES \n(enter para continuar..) ");
                         Console.ReadLine();
                         Console.Clear();
                         inGame = true;
                         playah.Start(50, 20, pj);
-                        playah1.Start(0, 0, pj1);//agrego
+                        playah1.Start(20, 10, pj1);//agrego
                         while (inGame)
                         {
 
@@ -221,6 +252,7 @@ namespace Juego
                                     Console.SetCursorPosition(50, 5);
                                     Console.WriteLine("GAME OVER\n\n\n(presione enter para continuar)");
                                     Console.ReadLine();
+                                    Console.Clear();
                                     inGame = false;
 
                                 }
@@ -236,6 +268,7 @@ namespace Juego
                                     Console.SetCursorPosition(50, 5);
                                     Console.WriteLine("GAME OVER\n\n\n(presione enter para continuar)");
                                     Console.ReadLine();
+                                    Console.Clear();
                                     inGame = false;
 
                                 }
@@ -248,6 +281,7 @@ namespace Juego
                                 Console.SetCursorPosition(50, 5);
                                 Console.WriteLine("GAME OVER\n\n\n(presione enter para continuar)");
                                 Console.ReadLine();
+                                Console.Clear();
                                 inGame = false;
                             }
 
