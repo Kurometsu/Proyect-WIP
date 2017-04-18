@@ -43,7 +43,7 @@ namespace Juego
         }
         public void MoveUp()
         {
-            if(posY!=0)
+            if(posY!=4)
                 posY -= 1;
         }
         public void MoveDown()

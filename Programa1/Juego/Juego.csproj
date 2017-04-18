@@ -46,8 +46,10 @@
     <Compile Include="Juego.cs" />
     <Compile Include="Obstaculo.cs" />
     <Compile Include="Personaje.cs" />
+    <Compile Include="Pickup.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Score.cs" />
     <Compile Include="Souls.cs" />
   </ItemGroup>
   <ItemGroup>
