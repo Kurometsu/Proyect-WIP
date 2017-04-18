@@ -26,6 +26,7 @@ namespace Juego
         private Score Points = new Score();
         private Pickup[] Items = new Pickup[10];
         private Bienvenida hi = new Bienvenida();
+        private Disparo shoot = new Disparo();
 
         //Creadores
         public void Iniciar()
@@ -97,6 +98,8 @@ namespace Juego
 
                             Points.Scoreboard();
 
+                            playah.ShowVidas();
+
                             for (int i = 0; i < Obst.Length; i++)
                             {
                                 Obst[i].Show();
@@ -106,7 +109,6 @@ namespace Juego
 
                                 Rivals[i].MoveLeft();
                                 Rivals[i].Show();
-
                             }
                             for (int i = 0; i < Items.Length; i++)
                             {
@@ -145,6 +147,14 @@ namespace Juego
                                     case ConsoleKey.LeftArrow:
                                         playah.MoveLeft();
                                         break;
+
+                                    /*case ConsoleKey.Spacebar:
+                                        while (!shoot.Death())
+                                        {
+                                            shoot.ShowDisparo(playah.getPosX(), playah.getPosY());
+                                            shoot.Recorrido(playah.getCheckDirec());
+                                        }
+                                        break; no funciona*/
                                 }
                             }
 
@@ -156,12 +166,17 @@ namespace Juego
 
                                 if (playah.getPosX() == Obst[i].getPosX() && playah.getPosY() == Obst[i].getPosY())
                                 {
-                                    Console.Clear();
-                                    Console.SetCursorPosition(50, 5);
-                                    Console.WriteLine("GAME OVER\n\n\n(presione enter para continuar)");
-                                    Console.ReadLine();
-                                    Console.Clear();
-                                    inGame = false;
+                                    playah.Damage();
+                                    playah.MoveDown(); //evita que saque mas de una vida por colision (solucion temporal)
+                                    if (playah.getVidas() <= 0)
+                                    {
+                                        Console.Clear();
+                                        Console.SetCursorPosition(50, 5);
+                                        Console.WriteLine("GAME OVER\n\n\n(presione enter para continuar)");
+                                        Console.ReadLine();
+                                        Console.Clear();
+                                        inGame = false;
+                                    }
 
                                 }
 
@@ -171,12 +186,17 @@ namespace Juego
 
                                 if (playah.getPosX() == Rivals[i].getPosX() && playah.getPosY() == Rivals[i].getPosY())
                                 {
-                                    Console.Clear();
-                                    Console.SetCursorPosition(50, 5);
-                                    Console.WriteLine("GAME OVER\n\n\n(presione enter para continuar)");
-                                    Console.ReadLine();
-                                    Console.Clear();
-                                    inGame = false;
+                                    playah.Damage();
+                                    playah.MoveDown(); //a tener en cuenta que podria empujar al jugador en direccion a otro enemigo
+                                    if (playah.getVidas() <= 0)
+                                    {
+                                        Console.Clear();
+                                        Console.SetCursorPosition(50, 5);
+                                        Console.WriteLine("GAME OVER\n\n\n(presione enter para continuar)");
+                                        Console.ReadLine();
+                                        Console.Clear();
+                                        inGame = false;
+                                    }
 
                                 }
 
