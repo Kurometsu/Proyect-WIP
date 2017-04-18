@@ -12,7 +12,7 @@ namespace Juego
         private int posY;
         private char Skin;
         private int vidas;
-        private int checkDirec; //sirve para checkear la direccion del disparo. no funciona.
+        //private int checkDirec; //sirve para checkear la direccion del disparo. no funciona.
 
         
         public void Start(int _x , int _y , char pj)
@@ -68,25 +68,25 @@ namespace Juego
         {
             if(posY!=4)
                 posY -= 1;
-            checkDirec = 1;
+            //checkDirec = 1;
         }
         public void MoveDown()
         {
             if (posY != 30)
                 posY += 1;
-            checkDirec = 2;
+            //checkDirec = 2;
         }
         public void MoveLeft()
         {
             if (posX != 0)
                 posX -= 1;
-            checkDirec = 3;
+            //checkDirec = 3;
         }
         public void MoveRight()
         {
             if (posX != 119)
                 posX += 1;
-            checkDirec = 4;
+            //checkDirec = 4;
         }
 
     }
