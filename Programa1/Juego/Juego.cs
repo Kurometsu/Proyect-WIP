@@ -25,7 +25,7 @@ namespace Juego
         private Obstaculo[] Obst = new Obstaculo[20];
         private Score Points = new Score();
         private Pickup[] Items = new Pickup[10];
-
+        private Bienvenida hi = new Bienvenida();
 
         //Creadores
         public void Iniciar()
@@ -53,24 +53,9 @@ namespace Juego
 
             while (eleccion != 4)
             {
-                if (File.Exists("MensajeBienvenida.txt") == false)
-                {
-                    FileStream msg = File.Create("MensajeBienvenida.txt");
-                    StreamWriter wrt = new StreamWriter(msg);
-                    StreamReader rdr = new StreamReader(msg);
-                    Console.SetCursorPosition(30, 4);
-                    Console.Write("-------WELCOME!!------- \ningrese el mensaje de bienvenida : ");
-                    wrt.WriteLine(Console.ReadLine());
-                    wrt.Close();
-                    msg.Close();
-                    Console.Clear();
-                    Console.SetCursorPosition(50, 5);
-                    //Console.WriteLine(rdr.ReadLine());
-                    //rdr.Close();
-
-                }
-                else
-                
+                hi.InsertarMsj();
+                Console.SetCursorPosition(50, 5);
+                Console.WriteLine(hi.Leer());
                 Console.SetCursorPosition(50, 6);
                 Console.WriteLine(" \n[1]Iniciar 1 jugador\n[2]Iniciar 2 jugadores\n[3]Creditos\n[4]Salir");
                 //Chequeo de error
